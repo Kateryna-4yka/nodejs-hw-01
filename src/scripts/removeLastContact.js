@@ -6,11 +6,13 @@ export const removeLastContact = async () => {
    try {
         const data = await readContacts();
 if (data.length>0) {
-        const lastItem = (data[data.length - 1]).id;
+        // const lastItem = (data[data.length - 1]).id;
+        // const notLastCont = data.filter((el)=>{ return el.id !== lastItem});
+        // await fs.writeFile(PATH_DB, JSON.stringify(notLastCont, null, 2));
 
-        const notLastCont = data.filter((el)=>{ return el.id !== lastItem});
-
-        await fs.writeFile(PATH_DB, JSON.stringify(notLastCont, null, 2));
+        data.pop();
+        await fs.writeFile(PATH_DB, JSON.stringify(data, null, 2));
+        console.log(data.length);
 }else{console.log(`У масиві немає контактів`);}
     } catch (error) {(console.log(error.message));}
 

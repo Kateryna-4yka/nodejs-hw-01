@@ -9,8 +9,6 @@ for (
     i++)
 {  contacts.push(createFakeContact());}
 
-
-console.log(contacts);
 try {
     await writeContacts(contacts); console.log('Контакти додано до db.json');
   } catch (er) {console.log( er.message);}
